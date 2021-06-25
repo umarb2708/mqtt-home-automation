@@ -9,18 +9,18 @@
 #include <PubSubClient.h>
 
 //Relays for switching appliances
-#define Relay1            15
-#define Relay2            2
+#define Relay1            12
+#define Relay2            14
 #define Relay3            4
-#define Relay4            22
+#define Relay4            5
 
 // Update these with values suitable for your network.
-const char* ssid = "Umar";
-const char* password = "umarahammed";
+const char* ssid = "Umar Jio";
+const char* password = "Umar@JIO123#";
 const char* mqtt_server = "192.168.15.138"; // Local IP address of Raspberry Pi
 
 const char* username = "HomeControll";
-const char* pass = "Esp@REX123#";
+const char* pass = "Esp@HIRA123#";
 // Subscribed Topics
 
 #define sub1 "first/living/light"
