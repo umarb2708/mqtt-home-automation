@@ -79,6 +79,46 @@ float mapfloat(float x, float in_min, float in_max, float out_min, float out_max
 {
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
+void moveForward()
+{
+  Serial.println("Front");
+  digitalWrite(IN1,);
+  digitalWrite(IN2,);
+  digitalWrite(IN3,);
+  digitalWrite(IN4,);
+}
+void moveBack()
+{
+  Serial.println("Back");
+  digitalWrite(IN1,);
+  digitalWrite(IN2,);
+  digitalWrite(IN3,);
+  digitalWrite(IN4,);
+}
+void moveLeft()
+{
+  Serial.println("Left");
+  digitalWrite(IN1,);
+  digitalWrite(IN2,);
+  digitalWrite(IN3,);
+  digitalWrite(IN4,);
+}
+void moveRight()
+{
+  Serial.println("Right");
+  digitalWrite(IN1,);
+  digitalWrite(IN2,);
+  digitalWrite(IN3,);
+  digitalWrite(IN4,);
+}
+void stop()
+{
+  Serial.println("Stopping....");
+  digitalWrite(IN1,LOW);
+  digitalWrite(IN2,LOW);
+  digitalWrite(IN3,LOW);
+  digitalWrite(IN4,LOW);
+}
 void callback(char* topic, byte* payload, unsigned int length)
 {
   digitalWrite(led, LOW);
@@ -102,6 +142,8 @@ void callback(char* topic, byte* payload, unsigned int length)
       moveLeft();
     }else if ((char)payload[0] == "right"){
       moveRight();
+    } else {
+      stop();
     }
   }
 }
@@ -122,8 +164,8 @@ void reconnect()
       client.publish("HIRA-WHEELS", "Connected");
       sensorValue = analogRead(analogInPin);
       float voltage = (((sensorValue * 3.3) / 1024) * 2 + calibration);
-      bat_percentage = mapfloat(voltage, 2.8, 4.2, 0, 100);
-      client.publish(pub1, bat_percentage);
+      bat_percentage = mapfloat(voltage, 1.3, 5.0, 0, 100);
+      client.publish(pub0, bat_percentage);
       // ... and resubscribe
       client.subscribe(sub1);
      //client.subscribe(sub4);
